@@ -1,0 +1,117 @@
+Registro
+
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("127.0.0.1", 5000)
+
+headersList = {
+ "Accept": "*/*",
+ "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+ "Content-Type": "application/json" 
+}
+
+payload = json.dumps({
+  "username": "Juan3",
+  "password": "test00",
+  "email": "juan@example.com"
+})
+
+conn.request("POST", "/register", payload, headersList)
+response = conn.getresponse()
+result = response.read()
+
+print(result.decode("utf-8"))
+
+********************************************************************************************
+Login
+
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("127.0.0.1", 5000)
+
+headersList = {
+ "Accept": "*/*",
+ "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+ "Content-Type": "application/json" 
+}
+
+payload = json.dumps({
+  "username": "Juan3",
+  "password": "test00"
+})
+
+conn.request("POST", "/login", payload, headersList)
+response = conn.getresponse()
+result = response.read()
+
+print(result.decode("utf-8"))
+
+********************************************************************************************
+Lectura usuarios
+
+import http.client
+
+conn = http.client.HTTPSConnection("127.0.0.1", 5000)
+
+headersList = {
+ "Accept": "*/*",
+ "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+ "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjdkNjNhOGIwNDEyODZhMzk4NDJkZjEiLCJ1c2VybmFtZSI6Ikp1YW4zIiwiZXhwIjoxNzE5NTc5OTc5fQ.4RcNQCbzVRU-ogXZ-vhI4y0NMHpHVrCzZHfNqY0iOE4" 
+}
+
+payload = ""
+
+conn.request("GET", "/users", payload, headersList)
+response = conn.getresponse()
+result = response.read()
+
+print(result.decode("utf-8"))
+
+********************************************************************************************
+Actualización usuario logueado
+
+import http.client
+import json
+
+conn = http.client.HTTPSConnection("127.0.0.1", 5000)
+
+headersList = {
+ "Accept": "*/*",
+ "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+ "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjdkNjNhOGIwNDEyODZhMzk4NDJkZjEiLCJ1c2VybmFtZSI6Ikp1YW4zIiwiZXhwIjoxNzE5NTc5OTc5fQ.4RcNQCbzVRU-ogXZ-vhI4y0NMHpHVrCzZHfNqY0iOE4",
+ "Content-Type": "application/json" 
+}
+
+payload = json.dumps({
+  "username": "Juan32",
+  "email": "juan@example.com"
+})
+
+conn.request("PUT", "/user", payload, headersList)
+response = conn.getresponse()
+result = response.read()
+
+print(result.decode("utf-8"))
+
+********************************************************************************************
+Eliminación usuario logueado
+
+import http.client
+
+conn = http.client.HTTPSConnection("127.0.0.1", 5000)
+
+headersList = {
+ "Accept": "*/*",
+ "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+ "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjdkNjNhOGIwNDEyODZhMzk4NDJkZjEiLCJ1c2VybmFtZSI6Ikp1YW4zIiwiZXhwIjoxNzE5NTc5OTc5fQ.4RcNQCbzVRU-ogXZ-vhI4y0NMHpHVrCzZHfNqY0iOE4" 
+}
+
+payload = ""
+
+conn.request("DELETE", "/user", payload, headersList)
+response = conn.getresponse()
+result = response.read()
+
+print(result.decode("utf-8"))
